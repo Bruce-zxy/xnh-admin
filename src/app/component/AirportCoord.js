@@ -268,7 +268,7 @@ const AirportCoordComponent = React.createClass({
             orient: 'vertical',
             top: 'bottom',
             left: 'right',
-            data:['北京 Top10', '上海 Top10', '广州 Top10'],
+            data:['上海 Top10', '北京 Top10', '广州 Top10'],
             textStyle: {
                 color: '#fff'
             },
@@ -302,7 +302,7 @@ const AirportCoordComponent = React.createClass({
         <div className='parent'>
           <ReactEcharts
             option={this.getOtion()}
-            style={{height: '450px', width: '630px'}}
+            style={{height: '400px', width: '550px'}}
             className='react_for_echarts' />
         </div>
     </div>

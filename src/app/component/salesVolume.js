@@ -104,7 +104,7 @@ class SalesVolume extends Component {
                 <div className='parent' style={{background:'#404A59',}}>
                     <ReactEcharts
                         option={this.state.option}
-                        style={{height: '450px', width: '380px'}}
+                        style={{height: '400px', width: '300px'}}
                         className='react_for_echarts' />
                 </div>
             </div>
