@@ -17,25 +17,14 @@ class SalesVolume extends Component {
     }
     componentWillMount() {
         // 初始化数据
-        this.changeData(2016)
-    }
-    changeData(id) {
-        // 改变单个数据
-        axios.get('http://localhost:3000/'+id)
-            .then(res => {
-                var resOption = this.state.option;
-                // 给series赋值
-                resOption.series[0].name = resOption.legend.data[0] = res.data.name;
-                resOption.series[0].data = res.data.data;
-                this.setState({ option: resOption });
-            })
+        this.changeMutiData(2016,2017,2018)
     }
     changeMutiData() {
         var resMutiOption = this.state.option;
         // data是一个数组，需要事先声明
         resMutiOption.legend.data = [];
         // 改变多个数据，并累加
-        for(let i = 0,len = arguments.length; i < len-1; i++) {
+        for(let i = 0,len = arguments.length; i < len; i++) {
             axios.get('http://localhost:3000/'+arguments[i])
                 .then(res => {
                     // 把获取到的data push到option的data中
@@ -47,50 +36,47 @@ class SalesVolume extends Component {
                     resMutiOption.series[i].data = res.data.data;
                     resMutiOption.series[i].type = 'map';
                     resMutiOption.series[i].mapType = '江西';
+                    resMutiOption.series[i].label = {
+                        normal: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                            }
+                        }
+                    }
                     // 改变状态
                     this.setState({ option: resMutiOption });
+                    console.log(this.state.option);
                 });
         }
     }
     getOtion() {
         const option = {
-            // 图表标题
-            title: {
-                text: '江西省年平均降雨量（单位：mm）',
-                subtext: '纯属虚构',
-                left: 'center'
-            },
+            backgroundColor: '#122E41',
             // 单个市hover产生的悬浮框
             tooltip: {
                 trigger: 'item'
             },
             // 左侧年份选项
             legend: {
-                orient: 'vertical',
-                right: 'right',
-                bottom: 50,
-                data:['2016']
+                orient: 'horizontal',
+                top: 'top',
+                data:[],
+                textStyle: {
+                    color: '#BFDAED'
+                },
             },
             // 图例度量尺
             visualMap: {
                 min: 0,
                 max: 2500,
-                left: 'left',
+                right: 'right',
                 top: 'bottom',
                 text: ['高','低'],
-                calculable: true
-            },
-            // 右侧功能工具箱
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
+                calculable: true,
+                textStyle: {
+                    color: '#BFDAED'
+                },
             },
             // 匹配地图属性
             geo: {
@@ -98,7 +84,7 @@ class SalesVolume extends Component {
                 map: '江西',
                 itemStyle: {
                     normal: {
-                        color: '#fff'
+                        color: '#323C47'
                     }
                 }
             },
@@ -107,35 +93,20 @@ class SalesVolume extends Component {
                 {
                     type: 'map',
                     mapType: '江西',
-                    roam: false,
-                    label: {
-                        normal: {
-                            show: true
-                        },
-                        emphasis: {
-                            show: true
-                        }
-                    },
                 }
             ]
         };
         return option;
     }
     render() {
-        console.log('this is salesVolume');
         return (
             <div className='examples'>
-                <div className='parent' style={{background:'#eee',}}>
+                <div className='parent' style={{background:'#404A59',}}>
                     <ReactEcharts
                         option={this.state.option}
-                        style={{height: '500px', width: '100%'}}
+                        style={{height: '450px', width: '380px'}}
                         className='react_for_echarts' />
-                    <br/>
                 </div>
-                <RaisedButton label="2016年" onTouchTap={this.changeData.bind(this,2016)} />
-                <RaisedButton label="2017年" primary={true} onTouchTap={this.changeData.bind(this,2017)} />
-                <RaisedButton label="2018年" secondary={true} onTouchTap={this.changeData.bind(this,2018)} />
-                <RaisedButton label="2016-2018年" onTouchTap={this.changeMutiData.bind(this,2016,2017,2018)} />
             </div>
         );
     }

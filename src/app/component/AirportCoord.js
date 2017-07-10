@@ -168,8 +168,8 @@ const AirportCoordComponent = React.createClass({
         var res = [];
         for (var i = 0; i < data.length; i++) {
             var dataItem = data[i];
-            var fromCoord = geoCoordMap[dataItem[0].name];
-            var toCoord = geoCoordMap[dataItem[1].name];
+            var toCoord = geoCoordMap[dataItem[0].name];
+            var fromCoord = geoCoordMap[dataItem[1].name];
             if (fromCoord && toCoord) {
                 res.push({
                     fromName: dataItem[0].name,
@@ -260,15 +260,7 @@ const AirportCoordComponent = React.createClass({
     });
 
     var option = {
-        backgroundColor: '#404a59',
-        title : {
-            text: '模拟迁徙',
-            subtext: '数据纯属虚构',
-            left: 'center',
-            textStyle : {
-                color: '#fff'
-            }
-        },
+        backgroundColor: '#122E41',
         tooltip : {
             trigger: 'item'
         },
@@ -293,7 +285,7 @@ const AirportCoordComponent = React.createClass({
             itemStyle: {
                 normal: {
                     areaColor: '#323c48',
-                    borderColor: '#404a59'
+                    borderColor: '#122E41'
                 },
                 emphasis: {
                     areaColor: '#2a333d'
@@ -310,7 +302,7 @@ const AirportCoordComponent = React.createClass({
         <div className='parent'>
           <ReactEcharts
             option={this.getOtion()}
-            style={{height: '500px', width: '700px'}}
+            style={{height: '450px', width: '630px'}}
             className='react_for_echarts' />
         </div>
     </div>
