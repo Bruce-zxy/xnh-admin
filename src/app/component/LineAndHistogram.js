@@ -12,6 +12,11 @@ class LineAndHistogram extends Component {
 
     getOtion() {
         var option = {
+            animation: true,
+            animationDuration: 1000,
+            animationEasing: 'cubicInOut',
+            animationDurationUpdate: 1000,
+            animationEasingUpdate: 'cubicInOut',
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -36,6 +41,11 @@ class LineAndHistogram extends Component {
                     },
                     axisPointer: {
                         type: 'shadow'
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#fff'
+                        }
                     }
                 }
             ],
@@ -50,7 +60,10 @@ class LineAndHistogram extends Component {
                         color: '#BFDAED'
                     },
                     axisLabel: {
-                        formatter: '{value} ml'
+                        formatter: '{value} ml',
+                        textStyle: {
+                            color: '#fff'
+                        }
                     }
                 },
                 {
@@ -63,7 +76,10 @@ class LineAndHistogram extends Component {
                         color: '#BFDAED'
                     },
                     axisLabel: {
-                        formatter: '{value} °C'
+                        formatter: '{value} °C',
+                        textStyle: {
+                            color: '#fff'
+                        }
                     }
                 }
             ],

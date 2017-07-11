@@ -45,7 +45,6 @@ class SalesVolume extends Component {
                     }
                     // 改变状态
                     this.setState({ option: resMutiOption });
-                    console.log(this.state.option);
                 });
         }
     }

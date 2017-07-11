@@ -6,6 +6,12 @@ require("echarts/map/js/china.js");
 require("echarts/map/js/province/jiangxi.js");
 
 class AirportCoordComponent extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            option: this.getOtion(),
+        };
+    }
     getOtion() {
         var geoCoordMap = {
             '南昌': [115.89,28.68],
@@ -267,7 +273,7 @@ class AirportCoordComponent extends Component{
                     period: 6,
                     trailLength: 0.7,
                     color: '#fff',
-                    symbolSize: 3
+                    symbolSize: 1
                 },
                 lineStyle: {
                     normal: {
@@ -282,18 +288,24 @@ class AirportCoordComponent extends Component{
                 type: 'lines',
                 zlevel: 2,
                 symbol: ['none', 'arrow'],
-                symbolSize: 10,
-                effect: {
-                    show: true,
-                    period: 6,
-                    trailLength: 0,
-                    symbol: planePath,
-                    symbolSize: 15
-                },
+                symbolSize: 3,
+                // effect: {
+                //     show: true,
+                //     period: 6,
+                //     trailLength: 0,
+                //     symbol: planePath,
+                //     symbolSize: 15
+                // },
                 lineStyle: {
                     normal: {
                         color: color[i],
                         width: 1,
+                        opacity: 0.6,
+                        curveness: 0.2
+                    },
+                    emphasis: {
+                        color: color[i],
+                        width: 3,
                         opacity: 0.6,
                         curveness: 0.2
                     }
@@ -353,7 +365,6 @@ class AirportCoordComponent extends Component{
                         show: false
                     }
                 },
-                roam: true,
                 itemStyle: {
                     normal: {
                         areaColor: '#323c48',
@@ -369,17 +380,24 @@ class AirportCoordComponent extends Component{
         return option;
     }
     changeSelected() {
-        console.log('test');
+        var optionC = this.state.option;
+        optionC.geo.map = window.event.offsetY > 380 ? "china" : "江西";
+        this.setState({
+            option: optionC
+        })
     }
     render() {
+        var onEvents = {
+            'legendselectchanged': this.changeSelected.bind(this)
+        }
         return (
             <div className='examples'>
                 <div className='parent'>
                     <ReactEcharts
-                        option={this.getOtion()}
+                        option={this.state.option}
                         style={{height: '400px', width: '550px'}}
                         className='react_for_echarts'
-                        onEvents={this.changeSelected.bind(this)}/>
+                        onEvents={onEvents}/>
                 </div>
             </div>
         );
