@@ -99,10 +99,10 @@ class SalesVolume extends Component {
     render() {
         return (
             <div className='examples'>
-                <div className='parent' style={{background:'#404A59',}}>
+                <div className='parent'>
                     <ReactEcharts
                         option={this.state.option}
-                        style={{height: '400px', width: '300px'}}
+                        style={{height: '100%'}}
                         className='react_for_echarts' />
                 </div>
             </div>

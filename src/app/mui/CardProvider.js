@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Card, CardText, CardHeader } from 'material-ui/Card';
 
 const CardProvider = (props) => (
-    <Card style={props.style}>
+    <Card className="Card" style={props.style}>
       <CardHeader
         title={props.title}
         style={props.style.header}
         titleColor={props.style.titleColor}
         titleStyle={props.style.header.titleStyle}
       />
-      <CardText>
+      <CardText style={props.style.text}>
         {props.children}
       </CardText>
     </Card>

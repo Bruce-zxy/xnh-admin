@@ -12,13 +12,25 @@ class App extends Component {
  	render() {
  		return (
 			<MuiThemeProvider>
-				<div style={{background: '#071B29'}}>
+				<div className="providerDiv" style={{background: '#071B29',height: '100%'}}>
 				    <table>
 				    	<tbody>
 				    		<tr>
-				    			<td><CardProvider title="江西省年均降雨量" style={cardStyles}><SalesVolume/></CardProvider></td>
-				    			<td><CardProvider title="国内游客去向" style={cardStyles}><AirportCoordComponent/></CardProvider></td>
-				    			<td><CardProvider title="折线图和柱状图" style={cardStyles}><LineAndHistogram/></CardProvider></td>
+				    			<td>
+					    			<CardProvider className="cardProvider" title="江西省年均降雨量" style={cardStyles}>
+						    			<SalesVolume/>
+					    			</CardProvider>
+				    			</td>
+				    			<td>
+					    			<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
+					    				<AirportCoordComponent/>
+					    			</CardProvider>
+				    			</td>
+				    			<td>
+					    			<CardProvider className="cardProvider" title="折线图和柱状图" style={cardStyles}>
+						    			<LineAndHistogram/>
+					    			</CardProvider>
+				    			</td>
 				    		</tr>
 				    	</tbody>
 				    </table>
@@ -30,6 +42,7 @@ class App extends Component {
 
 const cardStyles = {
 	background: '#122E41',
+	height: '100%',
     header: {
     	paddingBottom: 8,
     	paddingTop: 8,
@@ -39,6 +52,10 @@ const cardStyles = {
 	    	color: '#BFDAED',
 	    }
     },
+    text: {
+    	margin: '0 auto',
+    	height: '100%'
+    }
 
 };
 
