@@ -252,8 +252,8 @@ class AirportCoordComponent extends Component{
                 var fromCoord = geoCoordMap[dataItem[1].name];
                 if (fromCoord && toCoord) {
                     res.push({
-                        fromName: dataItem[0].name,
-                        toName: dataItem[1].name,
+                        fromName: dataItem[1].name,
+                        toName: dataItem[0].name,
                         coords: [fromCoord, toCoord]
                     });
                 }
@@ -261,7 +261,7 @@ class AirportCoordComponent extends Component{
             return res;
         };
 
-        var color = ['#a6c84c', '#ffa022', '#46bee9'];
+        var color = ['#00ffff', '#ffa022', '#46bee9'];
         var series = [];
         [['全省', JiangxiData], ['全国', ChinaData]].forEach(function (item, i) {
             series.push({
@@ -305,8 +305,8 @@ class AirportCoordComponent extends Component{
                     },
                     emphasis: {
                         color: color[i],
-                        width: 3,
-                        opacity: 0.6,
+                        width: 2,
+                        opacity: 1,
                         curveness: 0.2
                     }
                 },
@@ -322,8 +322,10 @@ class AirportCoordComponent extends Component{
                 label: {
                     normal: {
                         show: true,
-                        position: 'right',
-                        formatter: '{b}'
+                        position: 'top',
+                        formatter: function(item) {
+                            return item.name+'：'+item.value[2]
+                        }
                     }
                 },
                 symbolSize: function(val) {
