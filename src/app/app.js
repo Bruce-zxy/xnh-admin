@@ -15,23 +15,64 @@ class App extends Component {
 				<div className="providerDiv" style={{background: '#071B29',height: '100%'}}>
 				    <table>
 				    	<tbody>
-				    		<tr>
-				    			<td>
-					    			<CardProvider className="cardProvider" title="江西省年均降雨量" style={cardStyles}>
-						    			<SalesVolume/>
+				    		<tr style={{height: '50%'}}>
+				    			<td style={tdStyle}>
+					    			<CardProvider 
+						    			className="cardProvider" 
+						    			title="江西省年均降雨量" 
+						    			style={cardStyles}>
+						    			<SalesVolume
+						    				echartsStyle={echartsStyle} />
 					    			</CardProvider>
 				    			</td>
-				    			<td>
-					    			<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
-					    				<AirportCoordComponent/>
+				    			<td style={tdStyle}>
+					    			<CardProvider 
+					    				className="cardProvider" 
+					    				title="国内游客去向" 
+					    				style={cardStyles}>
+					    				<AirportCoordComponent
+					    					echartsStyle={echartsStyle} />
 					    			</CardProvider>
 				    			</td>
-				    			<td>
-					    			<CardProvider className="cardProvider" title="折线图和柱状图" style={cardStyles}>
-						    			<LineAndHistogram/>
+				    			<td style={tdStyle}>
+					    			<CardProvider 
+						    			className="cardProvider" 
+						    			title="折线图和柱状图" 
+						    			style={cardStyles}>
+						    			<LineAndHistogram
+						    				echartsStyle={echartsStyle} />
 					    			</CardProvider>
 				    			</td>
 				    		</tr>
+	    		    		<tr style={{height: '50%'}}>
+	    		    			<td style={tdStyle}>
+	    			    			<CardProvider 
+	    				    			className="cardProvider" 
+	    				    			title="江西省年均降雨量" 
+	    				    			style={cardStyles}>
+	    				    			<SalesVolume
+	    				    				echartsStyle={echartsStyle} />
+	    			    			</CardProvider>
+	    		    			</td>
+	    		    			<td style={tdStyle}>
+	    			    			<CardProvider 
+	    			    				className="cardProvider" 
+	    			    				title="国内游客去向" 
+	    			    				style={cardStyles}>
+	    			    				<AirportCoordComponent
+	    			    					echartsStyle={echartsStyle} />
+	    			    			</CardProvider>
+	    		    			</td>
+	    		    			<td style={tdStyle}>
+	    			    			<CardProvider 
+	    				    			className="cardProvider" 
+	    				    			title="折线图和柱状图" 
+	    				    			style={cardStyles}>
+	    				    			<LineAndHistogram
+	    				    				echartsStyle={echartsStyle} />
+	    			    			</CardProvider>
+	    		    			</td>
+	    		    		</tr>
 				    	</tbody>
 				    </table>
 			    </div>
@@ -43,6 +84,7 @@ class App extends Component {
 const cardStyles = {
 	background: '#122E41',
 	height: '100%',
+	width: '100%',
     header: {
     	paddingBottom: 8,
     	paddingTop: 8,
@@ -54,10 +96,24 @@ const cardStyles = {
     },
     text: {
     	margin: '0 auto',
-    	height: '100%'
+    	position: 'relative',
+    	height: '85%'
     }
-
 };
+
+const echartsStyle = {
+	height: '100%',
+	canvas: {
+		width: '100%',
+		height: '95%',
+		margin: '0 0 0 -50%',
+		left: '50%'
+	}
+}
+
+const tdStyle = {
+	width: '33%',
+}
 
 ReactDOM.render(
   <App />,

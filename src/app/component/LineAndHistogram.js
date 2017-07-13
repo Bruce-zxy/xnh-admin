@@ -106,11 +106,11 @@ class LineAndHistogram extends Component {
     }
     render() {
         return (
-            <div className='examples'>
-                <div className='parent'>
+            <div className='examples' style={this.props.echartsStyle}>
+                <div className='parent' style={this.props.echartsStyle}>
                   <ReactEcharts
                     option={this.getOtion()}
-                    style={{height: '400px', width: '550px'}}
+                    style={this.props.echartsStyle.canvas}
                     className='react_for_echarts' />
                 </div>
             </div>

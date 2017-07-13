@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardText, CardHeader } from 'material-ui/Card';
 
 const CardProvider = (props) => (
-    <Card className="Card" style={props.style}>
+    <Card className="card" style={props.style}>
       <CardHeader
         title={props.title}
         style={props.style.header}
