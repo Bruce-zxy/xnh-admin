@@ -8,71 +8,50 @@ import SalesVolume from './component/SalesVolume';
 import AirportCoordComponent from './component/AirportCoord';
 import LineAndHistogram from './component/LineAndHistogram';
 
+import blockAreaData from './MapExampleBlockArea';
+import fromtoLinesData from './MapExampleFromToLines';
+import barLinesData from './ChartExampleBarLines';
+
 class App extends Component {
  	render() {
  		return (
 			<MuiThemeProvider>
-				<div className="providerDiv" style={{background: '#071B29',height: '100%'}}>
+				<div style={{background: '#071B29'}}>
 				    <table>
 				    	<tbody>
-				    		<tr style={{height: '50%'}}>
-				    			<td style={tdStyle}>
-					    			<CardProvider 
-						    			className="cardProvider" 
-						    			title="江西省年均降雨量" 
-						    			style={cardStyles}>
-						    			<SalesVolume
-						    				echartsStyle={echartsStyle} />
-					    			</CardProvider>
-				    			</td>
-				    			<td style={tdStyle}>
-					    			<CardProvider 
-					    				className="cardProvider" 
-					    				title="国内游客去向" 
-					    				style={cardStyles}>
-					    				<AirportCoordComponent
-					    					echartsStyle={echartsStyle} />
-					    			</CardProvider>
-				    			</td>
-				    			<td style={tdStyle}>
-					    			<CardProvider 
-						    			className="cardProvider" 
-						    			title="折线图和柱状图" 
-						    			style={cardStyles}>
-						    			<LineAndHistogram
-						    				echartsStyle={echartsStyle} />
-					    			</CardProvider>
-				    			</td>
+				    		<tr>
+								<td style={tdStyle}>
+									<CardProvider className="cardProvider" title="折线图和柱状图" style={cardStyles}>
+										<LineAndHistogram
+											yAxisConfig={barLinesData.yAxisConfig}
+											LegendData={barLinesData.legendData}
+											xAxisData={barLinesData.xAxisData}
+											seriesData={barLinesData.seriesData}
+										/>
+									</CardProvider>
+								</td>
+								<td style={tdStyle}>
+									<CardProvider className="cardProvider" title="江西省年均降雨量" style={cardStyles}>
+										<SalesVolume
+											geoMapName={blockAreaData.geoMapName}
+											visualMin={blockAreaData.visualMin}
+											visualMax={blockAreaData.visualMax}
+											visualLabel={blockAreaData.visualLabel}
+											seriesData={blockAreaData.mapDataSeries}
+										/>
+									</CardProvider>
+								</td>
+								<td style={tdStyle}>
+									<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
+										<AirportCoordComponent
+											geoMapName = {fromtoLinesData.geoMapName}
+											directionOut = {fromtoLinesData.directionOut}
+											fromtoLines = {fromtoLinesData.fromtoLines}
+											iconPath = {fromtoLinesData.iconPath}
+										/>
+									</CardProvider>
+								</td>
 				    		</tr>
-	    		    		<tr style={{height: '50%'}}>
-	    		    			<td style={tdStyle}>
-	    			    			<CardProvider 
-	    				    			className="cardProvider" 
-	    				    			title="江西省年均降雨量" 
-	    				    			style={cardStyles}>
-	    				    			<SalesVolume
-	    				    				echartsStyle={echartsStyle} />
-	    			    			</CardProvider>
-	    		    			</td>
-	    		    			<td style={tdStyle}>
-	    			    			<CardProvider 
-	    			    				className="cardProvider" 
-	    			    				title="国内游客去向" 
-	    			    				style={cardStyles}>
-	    			    				<AirportCoordComponent
-	    			    					echartsStyle={echartsStyle} />
-	    			    			</CardProvider>
-	    		    			</td>
-	    		    			<td style={tdStyle}>
-	    			    			<CardProvider 
-	    				    			className="cardProvider" 
-	    				    			title="折线图和柱状图" 
-	    				    			style={cardStyles}>
-	    				    			<LineAndHistogram
-	    				    				echartsStyle={echartsStyle} />
-	    			    			</CardProvider>
-	    		    			</td>
-	    		    		</tr>
 				    	</tbody>
 				    </table>
 			    </div>
@@ -83,7 +62,6 @@ class App extends Component {
 
 const cardStyles = {
 	background: '#122E41',
-	height: '100%',
 	width: '100%',
     header: {
     	paddingBottom: 8,
@@ -97,15 +75,13 @@ const cardStyles = {
     text: {
     	margin: '0 auto',
     	position: 'relative',
-    	height: '85%'
     }
 };
 
 const echartsStyle = {
-	height: '100%',
 	canvas: {
 		width: '100%',
-		height: '95%',
+		height: '500px',
 		margin: '0 0 0 -50%',
 		left: '50%'
 	}
