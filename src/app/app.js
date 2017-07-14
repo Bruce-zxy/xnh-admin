@@ -7,6 +7,8 @@ import CardProvider from './mui/CardProvider';
 import SalesVolume from './component/SalesVolume';
 import AirportCoordComponent from './component/AirportCoord';
 import LineAndHistogram from './component/LineAndHistogram';
+import DynamicChartComponent from './component/DynamicChartComponent';
+import ChartComponent from './component/ChartComponent'
 
 import blockAreaData from './MapExampleBlockArea';
 import fromtoLinesData from './MapExampleFromToLines';
@@ -52,6 +54,18 @@ class App extends Component {
 									</CardProvider>
 								</td>
 				    		</tr>
+				    		<tr>
+				    			<td colSpan="2" > 
+				    				<CardProvider className="cardProvider" title="动态折线柱状图" style={cardStyles}>
+					    				<DynamicChartComponent />
+				    				</CardProvider>
+				    			</td>
+				    			<td>
+				    				<CardProvider className="cardProvider" title="雷达图" style={cardStyles}>
+					    				<ChartComponent />
+				    				</CardProvider>
+				    			</td>
+				    		</tr>
 				    	</tbody>
 				    </table>
 			    </div>
@@ -80,7 +94,7 @@ const cardStyles = {
 
 const echartsStyle = {
 	canvas: {
-		width: '100%',
+		width: '400px',
 		height: '500px',
 		margin: '0 0 0 -50%',
 		left: '50%'

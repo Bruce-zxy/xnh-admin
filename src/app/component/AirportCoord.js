@@ -341,9 +341,10 @@ class AirportCoordComponent extends Component{
 
       return (
         <div className='examples'>
-          <div className='parent'>
+          <div className='parent' style={{position: 'relative'}}>
             <ReactEcharts
               option={option}
+              style={{width: '500px',height: '400px',margin: '0 0 0 -50%',left: '50%'}}
               className='react_for_echarts'
             />
           </div>
